@@ -13,5 +13,4 @@ COPY . /myapp
 RUN bundle install --without test development --path vendor/bundle -j4
 RUN bundle exec rake assets:precompile
 
-EXPOSE 3000
 CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
