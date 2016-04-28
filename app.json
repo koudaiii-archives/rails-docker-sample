@@ -1,0 +1,7 @@
+{
+  "name": "rails-docker-sample",
+  "image": "heroku/ruby",
+  "addons": [
+    "heroku-postgresql"
+  ]
+}
