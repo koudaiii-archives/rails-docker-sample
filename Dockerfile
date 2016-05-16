@@ -8,11 +8,9 @@ RUN apt-get update -qq && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /myapp
-ONBUILD ADD Gemfile /myapp
-ONBUILD ADD Gemfile.lock /myapp
-ONBUILD RUN bundle install --without test development --path vendor/bundle -j4
-
 COPY . /myapp
+RUN bundle install --without test development --path vendor/bundle -j4
+
 RUN bundle exec rake assets:precompile
 
 CMD ["script/server"]
