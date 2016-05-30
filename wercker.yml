@@ -23,8 +23,8 @@ build:
     steps:
         - bundle-install
         - script:
-            name: rspec
-            code: bundle exec rspec
+            name: GIT_COMMIT
+            code: echo $WERCKER_GIT_COMMIT
 deploy:
   steps:
     - internal/docker-push:
