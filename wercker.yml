@@ -30,6 +30,8 @@ deploy:
     - internal/docker-push:
         username: $USERNAME
         password: $PASSWORD
+        email: $EMAIL
+        cmd: script/server
         tag: $WERCKER_GIT_COMMIT
         repository: koudaiii/rails-docker-sample
         registry: https://hub.docker.com
