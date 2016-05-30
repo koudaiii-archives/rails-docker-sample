@@ -33,6 +33,7 @@ deploy:
         password: $PASSWORD
         email: $EMAIL
         tag: $WERCKER_GIT_COMMIT
-        cmd: cd /pipeline/source/;script/server
+        working-dir: /pipeline/source/
+        cmd: script/server
         repository: koudaiii/rails-docker-sample
         registry: https://hub.docker.com
