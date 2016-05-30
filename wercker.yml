@@ -27,10 +27,12 @@ build:
             code: echo $WERCKER_GIT_COMMIT
 deploy:
   steps:
+    - bundle-install
     - internal/docker-push:
         username: $USERNAME
         password: $PASSWORD
         email: $EMAIL
         tag: $WERCKER_GIT_COMMIT
+        cmd: cd /pipeline/source/;script/server
         repository: koudaiii/rails-docker-sample
         registry: https://hub.docker.com
