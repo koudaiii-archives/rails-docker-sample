@@ -32,4 +32,4 @@ deploy:
         password: $PASSWORD
         tag: $WERCKER_GIT_COMMIT
         repository: koudaiii/rails-docker-sample
-        registry: https://registry.hub.docker.com
+        registry: https://hub.docker.com
