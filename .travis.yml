@@ -16,6 +16,6 @@ script:
 - bundle exec rake db:create
 - bundle exec rake
 after_success:
-- docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+- docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 - docker build -t docker.io/$REPO:${TRAVIS_COMMIT::8} .
 - docker push docker.io/$REPO:${TRAVIS_COMMIT::8}
