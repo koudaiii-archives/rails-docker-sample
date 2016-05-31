@@ -16,4 +16,5 @@ env:
 before_install:
 - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
 - docker build -t $REPO:$COMMIT .
+- docker tag -f $REPO:$COMMIT $REPO:$TAG
 - docker push $REPO:$COMMIT
