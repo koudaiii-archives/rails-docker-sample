@@ -17,5 +17,5 @@ script:
 - bundle exec rake
 after_success:
 - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-- docker build -t $REPO:${TRAVIS_COMMIT::8} .
-- docker push $REPO:${TRAVIS_COMMIT::8}
+- docker build -t docker.io/$REPO:${TRAVIS_COMMIT::8} .
+- docker push docker.io/$REPO:${TRAVIS_COMMIT::8}
