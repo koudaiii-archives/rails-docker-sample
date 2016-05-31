@@ -20,7 +20,11 @@ script:
 - bundle exec rake db:create
 - bundle exec rake
 deploy:
-- docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-- docker build -t $REPO:$COMMIT .
-- docker tag -f $REPO:$COMMIT $REPO:$TAG
-- docker push $REPO:$COMMIT
+  provider: script
+  script:
+    - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+    - docker build -t $REPO:$COMMIT .
+    - docker tag -f $REPO:$COMMIT $REPO:$TAG
+    - docker push $REPO:$COMMIT
+  on:
+    branch: master
