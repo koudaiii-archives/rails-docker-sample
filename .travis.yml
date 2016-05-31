@@ -18,3 +18,7 @@ before_install:
 - docker build -t $REPO:$COMMIT .
 - docker tag -f $REPO:$COMMIT $REPO:$TAG
 - docker push $REPO:$COMMIT
+script:
+- echo $REPO:$COMMIT
+- bundle exec rake db:create
+- bundle exec rake
