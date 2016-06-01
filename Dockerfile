@@ -1,4 +1,4 @@
-FROM ruby:2.3.0-slim
+FROM ruby:2.3.1-slim
 
 ENV RAILS_ENV production
 ENV SECRET_KEY_BASE $(openssl rand -base64 32)
