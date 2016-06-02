@@ -1,6 +1,5 @@
 FROM ruby:2.3.1-slim
 
-ENV RAILS_ENV production
 ENV SECRET_KEY_BASE $(openssl rand -base64 32)
 
 RUN apt-get update -qq && \
@@ -9,7 +8,7 @@ RUN apt-get update -qq && \
 
 WORKDIR /myapp
 COPY . /myapp
-RUN bundle install --without test development --path vendor/bundle -j4
+RUN bundle install --without test development -j4
 
 RUN bundle exec rake assets:precompile
 
