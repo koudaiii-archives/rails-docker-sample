@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Job
+metadata:
+  labels:
+    name: migration
+  name: migration
+  namespace: rails
+spec:
+  activeDeadlineSeconds: 100
+  selector:
+    matchLabels:
+      name: migration
+      app: rails
+  template:
+    metadata:
+      name: migration
+      labels:
+        name: migration
+        app: rails
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: migration
+        image: koudaiii/rails-docker-sample:latest
+        imagePullPolicy: Always
+        command: ["bundle", "exec", "rake", "db:create"]
+        env:
+          - name: DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                name: rails
+                key: database-url

@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: green
+  namespace: rails
+  labels:
+    name: app
+    app: rails
+    color: green
+spec:
+  minReadySeconds: 30
+  strategy:
+    type: RollingUpdate
+  replicas: 1
+  template:
+    metadata:
+      name: green
+      labels:
+        name: app
+        app: rails
+        color: green
+    spec:
+      containers:
+      - image: koudaiii/rails-docker-sample:latest
+        name: green
+        ports:
+          - containerPort: 3000
+            name: rails
+        env:
+          - name: DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                name: rails
+                key: database-url
+        command:
+        - script/server

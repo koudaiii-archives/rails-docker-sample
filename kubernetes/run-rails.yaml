@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: rails
+  name: rails
+spec:
+  containers:
+    - name: rails
+      image: koudaiii/rails-docker-sample:latest
+      ports:
+        - containerPort: 3000
+      env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: rails
+              key: database-url

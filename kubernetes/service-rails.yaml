@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rails
+  namespace: rails
+  labels:
+    name: app
+    app: rails
+spec:
+  type: NodePort
+  ports:
+    -
+      name: rails
+      port: 3000
+      targetPort: 3000
+  selector:
+    name: app
+    app: rails
+    color: switch
