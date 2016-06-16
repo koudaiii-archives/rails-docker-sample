@@ -1,7 +1,9 @@
 box: node
 build:
   steps:
-    - script: echo "Hello"
+    - script:
+        name: Say Hello
+        code: echo "Hello"
   after-steps:
     - install-packages:
       packages: ruby
@@ -9,7 +11,9 @@ build:
       webhook_url: $SLACK_WEBHOOK_URL
 deploy:
   steps:
-    - script: echo "Hello"
+    - script:
+        name: Say Hello
+        code: echo "Hello"
   after-steps:
     - install-packages:
       packages: ruby
