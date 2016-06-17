@@ -1,4 +1,4 @@
-box: node
+box: ruby
 build:
   steps:
     - script:
